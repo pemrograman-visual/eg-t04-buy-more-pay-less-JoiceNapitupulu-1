@@ -1,0 +1,166 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="4.2">
+    <attributes>
+        <attribute name="name" value="tugasbaru"/>
+        <attribute name="authors" value="VIVOBOOK"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2024-11-06 04:37:01 PM"/>
+        <attribute name="created" value="VklWT0JPT0s7V0lOREE7MjAyNC0xMC0yMzswODo1OToyMiBBTTsyMjYz"/>
+        <attribute name="edited" value="VklWT0JPT0s7V0lOREE7MjAyNC0xMC0yMzswMjoyNDozNSBQTTsyOzIzNzc="/>
+        <attribute name="edited" value="Sk9JQ0U7QkVFTFpFQlVCOzIwMjQtMTEtMDY7MDQ6MzM6MDQgUE07MTtWSVZPQk9PSztXSU5EQTsyMDI0LTEwLTIzOzA4OjU5OjIyIEFNO3R1Z2FzYmFydVsxXS5mcHJnOzY0NjU="/>
+        <attribute name="edited" value="Sk9JQ0U7QkVFTFpFQlVCOzIwMjQtMTEtMDY7MDQ6Mzc6MDEgUE07NTsyNDA1"/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="ISBN" type="String" array="True" size="3"/>
+            <declare name="Price" type="Real" array="True" size="3"/>
+            <declare name="Quantity" type="Integer" array="True" size="3"/>
+            <declare name="i, j" type="Integer" array="False" size=""/>
+            <for variable="i" start="0" end="2" direction="inc" step="1">
+                <assign variable="ISBN[i]" expression="&quot;0&quot;"/>
+                <assign variable="Price[i]" expression="0"/>
+                <assign variable="Quantity[i]" expression="0"/>
+            </for>
+            <assign variable="j" expression="0"/>
+            <declare name="Quantity1, Quantity2, Quantity3" type="Integer" array="False" size=""/>
+            <declare name="TotalPrice1, TotalPrice2, TotalPrice3" type="Real" array="False" size=""/>
+            <declare name="hargatotal1, hargatotal2, hargatotal3" type="Real" array="False" size=""/>
+            <assign variable="Quantity1" expression="0"/>
+            <assign variable="Quantity2" expression="0"/>
+            <assign variable="Quantity3" expression="0"/>
+            <assign variable="TotalPrice1" expression="0"/>
+            <assign variable="TotalPrice2" expression="0"/>
+            <assign variable="TotalPrice3" expression="0"/>
+            <assign variable="hargatotal1" expression="0"/>
+            <assign variable="hargatotal2" expression="0"/>
+            <assign variable="hargatotal3" expression="0"/>
+            <declare name="hargatotal" type="Real" array="False" size=""/>
+            <declare name="ISBN0" type="String" array="False" size=""/>
+            <do expression="ISBN0!=&quot;---&quot;">
+                <input variable="ISBN0"/>
+                <if expression="ISBN0=&quot;---&quot;">
+                    <then/>
+                    <else>
+                        <if expression="ISBN0=ISBN[0]">
+                            <then>
+                                <input variable="Price[0]"/>
+                                <input variable="Quantity[0]"/>
+                                <assign variable="Quantity1" expression="Quantity1+Quantity[0]"/>
+                                <assign variable="TotalPrice1" expression="Price[0]*Quantity1"/>
+                            </then>
+                            <else>
+                                <if expression="ISBN0=ISBN[1]">
+                                    <then>
+                                        <input variable="Price[1]"/>
+                                        <input variable="Quantity[1]"/>
+                                        <assign variable="Quantity2" expression="Quantity2+Quantity[1]"/>
+                                        <assign variable="TotalPrice2" expression="Price[1]*Quantity2"/>
+                                    </then>
+                                    <else>
+                                        <if expression="ISBN0=ISBN[2]">
+                                            <then>
+                                                <input variable="Price[2]"/>
+                                                <input variable="Quantity[2]"/>
+                                                <assign variable="Quantity3" expression="Quantity3+Quantity[2]"/>
+                                                <assign variable="TotalPrice3" expression="Price[2]*Quantity3"/>
+                                            </then>
+                                            <else>
+                                                <input variable="price[j]"/>
+                                                <input variable="Quantity[j]"/>
+                                                <if expression="j=0">
+                                                    <then>
+                                                        <assign variable="ISBN[j]" expression="ISBN0"/>
+                                                        <assign variable="Quantity1" expression="Quantity1+Quantity[0]"/>
+                                                        <assign variable="TotalPrice1" expression="Price[0]*Quantity1"/>
+                                                        <assign variable="j" expression="1"/>
+                                                    </then>
+                                                    <else>
+                                                        <if expression="j=1">
+                                                            <then>
+                                                                <assign variable="ISBN[j]" expression="ISBN0"/>
+                                                                <assign variable="Quantity2" expression="Quantity2+Quantity[1]"/>
+                                                                <assign variable="TotalPrice2" expression="Price[1]*Quantity2"/>
+                                                                <assign variable="j" expression="2"/>
+                                                            </then>
+                                                            <else>
+                                                                <assign variable="ISBN[j]" expression="ISBN0"/>
+                                                                <assign variable="Quantity3" expression="Quantity3+Quantity[2]"/>
+                                                                <assign variable="TotalPrice3" expression="Price[2]*Quantity3"/>
+                                                            </else>
+                                                        </if>
+                                                    </else>
+                                                </if>
+                                            </else>
+                                        </if>
+                                    </else>
+                                </if>
+                            </else>
+                        </if>
+                    </else>
+                </if>
+            </do>
+            <if expression="Quantity1&gt;=5&amp;&amp;Quantity1&lt;10">
+                <then>
+                    <assign variable="hargatotal1" expression="TotalPrice1-(TotalPrice1*0.02)"/>
+                </then>
+                <else>
+                    <if expression="Quantity1&gt;=10&amp;&amp;Quantity1&lt;20">
+                        <then>
+                            <assign variable="hargatotal1" expression="TotalPrice1-(TotalPrice1*0.05)"/>
+                        </then>
+                        <else>
+                            <if expression="Quantity1&gt;=20">
+                                <then>
+                                    <assign variable="hargatotal1" expression="TotalPrice1-(TotalPrice1*0.12)"/>
+                                </then>
+                                <else>
+                                    <assign variable="hargatotal1" expression="TotalPrice1"/>
+                                </else>
+                            </if>
+                        </else>
+                    </if>
+                </else>
+            </if>
+            <if expression="Quantity2&gt;=5&amp;&amp;Quantity2&lt;10">
+                <then>
+                    <assign variable="hargatotal2" expression="TotalPrice2-(TotalPrice2*0.02)"/>
+                </then>
+                <else>
+                    <if expression="Quantity2&gt;=10&amp;&amp;Quantity2&lt;20">
+                        <then>
+                            <assign variable="hargatotal2" expression="TotalPrice2-(TotalPrice2*0.05)"/>
+                        </then>
+                        <else>
+                            <if expression="Quantity2&gt;=20">
+                                <then>
+                                    <assign variable="hargatotal2" expression="TotalPrice2-(TotalPrice2*0.12)"/>
+                                </then>
+                                <else>
+                                    <assign variable="hargatotal2" expression="TotalPrice2"/>
+                                </else>
+                            </if>
+                        </else>
+                    </if>
+                </else>
+            </if>
+            <if expression="Quantity3&gt;=5&amp;&amp;Quantity3&lt;10">
+                <then>
+                    <assign variable="hargatotal3" expression="TotalPrice3-(TotalPrice3*0.02)"/>
+                </then>
+                <else>
+                    <if expression="Quantity3&gt;=10&amp;&amp;Quantity3&lt;20">
+                        <then>
+                            <assign variable="hargatotal3" expression="TotalPrice3-(TotalPrice3*0.05)"/>
+                        </then>
+                        <else>
+                            <assign variable="hargatotal3" expression="TotalPrice3"/>
+                        </else>
+                    </if>
+                </else>
+            </if>
+            <assign variable="hargatotal" expression="hargatotal1+hargatotal2+hargatotal3"/>
+            <output expression="ToFixed(hargatotal,2)" newline="True"/>
+        </body>
+    </function>
+</flowgorithm>
